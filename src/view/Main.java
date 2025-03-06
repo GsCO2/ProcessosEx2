@@ -17,7 +17,7 @@ public class Main {
 				kc.mataPid(pid);
 				break;
 			case 3:
-				String nome = JOptionPane.showInputDialog("Digite o nome a ser morto(com a extensão .exe .txt, etc");
+				String nome = JOptionPane.showInputDialog("Digite o nome a ser morto(com a extensão .exe .txt, etc)");
 				kc.mataNome(nome);
 				break;
 			case 9:
