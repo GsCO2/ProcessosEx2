@@ -38,4 +38,48 @@ public class KillController {
 			System.err.println(e.getMessage());
 		}
 	}
+	public void mataPid(int pid) {
+		String os = os();
+		StringBuffer m = new StringBuffer();
+		if(os.contains("Windows")) {
+			m.append("TASKKILL /PID");
+			m.append(" ");
+			m.append(pid);
+		} else if(os.contains("Linux")) {
+			m.append("kill -9");
+			m.append(" ");
+			m.append(pid);
+		} else {
+			System.out.println("OS não identificado.");
+		}
+		String[] matar = m.toString().split(" ");
+		try {
+			Runtime.getRuntime().exec(matar);
+			System.out.println("MORTO!");
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	public void mataNome(String nome) {
+		String os = os();
+		StringBuffer m = new StringBuffer();
+		if(os.contains("Windows")) {
+			m.append("TASKKILL /IM");
+			m.append(" ");
+			m.append(nome);
+		} else if(os.contains("Linux")) {
+			m.append("pkill -f");
+			m.append(" ");
+			m.append(nome);
+		} else {
+			System.out.println("OS não identificado");
+		}
+		String[] matar = m.toString().split(" ");
+		try {
+			Runtime.getRuntime().exec(matar);
+			System.out.println("MORTO!");
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
 }
